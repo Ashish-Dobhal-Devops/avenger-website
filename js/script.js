@@ -1,5 +1,27 @@
-// Function to handle superhero clicks
 function superheroClicked(superheroId) {
+    var superheroElement = document.getElementById(superheroId);
+
+    // Define a mapping of superhero IDs to animation classes
+    var animationClasses = {
+        "ironMan": "zoom-in",
+        "captainAmerica": "rotate",
+        "thor": "slide-in",
+        "hulk": "pulse",
+        "blackWidow": "bounce"
+    };
+
+    // Get the corresponding animation class for the clicked superhero
+    var animationClass = animationClasses[superheroId];
+
+    // Toggle the animation class
+    superheroElement.classList.add(animationClass);
+
+    // Remove the animation class after the animation completes
+    setTimeout(function () {
+        superheroElement.classList.remove(animationClass);
+    }, 500); // Adjust the timeout to match the animation duration
+
+    // Increment click count
     var clicksElement = document.getElementById(superheroId + "Clicks");
     var clicks = parseInt(clicksElement.innerText.split(": ")[1]) + 1;
     clicksElement.innerText = "Clicks: " + clicks;
